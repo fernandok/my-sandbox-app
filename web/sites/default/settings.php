@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL); 
 // phpcs:ignoreFile
 
 /**
@@ -88,16 +88,7 @@
  * ];
  * @endcode
  */
-$databases['default']['default'] = [
-   'database' => 'sandbox_db',
-   'username' => 'sandbox_admin',
-   'password' => 'Password@123',
-   'host' => 'my-sandbox-app-db.mysql.database.azure.com',
-   'port' => '3306',
-   'driver' => 'mysql',
-   'prefix' => '',
-   'collation' => 'utf8mb4_general_ci',
- ];
+$databases = [];
 
 /**
  * Customizing database settings.
@@ -273,7 +264,7 @@ $databases['default']['default'] = [
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = '7TJ6v0I4xFBSZClo2Ud6yV2FjDPHmnh225eh7W19Ci39vly34sb_pbf40DvUxg7EurCrEcMwSA';
 
 /**
  * Deployment identifier.
@@ -296,7 +287,7 @@ $settings['hash_salt'] = '';
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = FALSE;
+$settings['update_free_access'] =TRUE;// FALSE;
 
 /**
  * Fallback to HTTP for Update Manager and for fetching security advisories.
@@ -822,3 +813,15 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+$databases['default']['default'] = array (
+  'database' => 'sandbox_db',
+  'username' => 'sandbox_admin',
+  'password' => 'Password@123',
+  'prefix' => '',
+  'host' => 'opendb.mysql.database.azure.com',
+  'port' => '3306',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);
+$settings['config_sync_directory'] = 'sites/default/files/config_e7cA_aUUqqYHnviCiYydl2P-GFeqeEWWrvpoFbKyZGobUYy-AvxrzXe4zeN25TLy4fWkJgD4Pg/sync';
